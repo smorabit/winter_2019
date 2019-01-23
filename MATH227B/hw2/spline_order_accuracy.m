@@ -9,7 +9,7 @@
 % note: y in the below function can have 
 
 
-function p = spline_order_accuracy(f,a,b,n, boundary)
+function p = spline_order_accuracy(f,a,b,n, boundary, plot)
     
     %boundary conditions: start & end slope
     start_slope = double(subs(diff(f),a));
@@ -38,19 +38,22 @@ function p = spline_order_accuracy(f,a,b,n, boundary)
     yy2 = spline(x_sim2, y_sim2, xx);
     
     %plot
-    if boundary
-        plot(x_sim,y_sim(2:end-1),'o',xx,yy);
-    else
-        plot(x_sim,y_sim,'o',xx,yy);
+    if plot
+        if boundary
+            plot(x_sim,y_sim(2:end-1),'o',xx,yy);
+        else
+            plot(x_sim,y_sim,'o',xx,yy);
+        end
+        grid on;
     end
-    grid on;
+    
     
     %compute relative error between simulated data and spline:
-    re = abs((y - yy)./y);
-    re2 = abs((y - yy2)./y);
+    e = norm(abs(y - yy), Inf);
+    e2 = norm(abs(y - yy2), Inf);
     
-    %compute p:
-    p = mean(log(re ./ re2) / log(2));
+    p = log(e/e2)/log(2);
+    
 
 end
 
