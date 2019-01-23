@@ -47,8 +47,6 @@ function p = spline_order_accuracy(f,a,b,n, boundary, plot)
         grid on;
     end
     
-    
-    %compute relative error between simulated data and spline:
     e = norm(abs(y - yy), Inf);
     e2 = norm(abs(y - yy2), Inf);
     

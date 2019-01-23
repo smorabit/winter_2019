@@ -23,6 +23,7 @@ end
 plot(n_list, ps, 'LineWidth', 1.5)
 xlabel("n")
 ylabel("p")
+%set(gca, 'XScale', 'log')
 grid on
 hold off
 
