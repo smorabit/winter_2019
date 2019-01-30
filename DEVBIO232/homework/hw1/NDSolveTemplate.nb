@@ -1,0 +1,294 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     11696,        286]
+NotebookOptionsPosition[     11190,        267]
+NotebookOutlinePosition[     11627,        284]
+CellTagsIndexPosition[     11584,        281]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["NDSolveTemplate.nb\nTemplate for Using NDSolve to solve and plot a \
+system of differential equations\nCopyright 2011 by Professor Lee Bardwell, \
+Univeristy of California, Irvine\n", "Text",
+  FontSize->14,
+  FontWeight->"Bold"],
+ StyleBox["version: 11 January, 2018", "Text",
+  FontSize->14]
+}], "Text",
+ PageWidth->WindowWidth,
+ CellFrame->{{0, 0}, {0, 2}},
+ CellChangeTimes->{{3.472506037228557*^9, 3.472506118630969*^9}, {
+   3.472506156207822*^9, 3.4725061585604067`*^9}, 3.472506211147997*^9, {
+   3.472506309361084*^9, 3.472506402408091*^9}, {3.4725064422937937`*^9, 
+   3.472506486792239*^9}, {3.472506668236364*^9, 3.472506749007777*^9}, {
+   3.4782722702239227`*^9, 3.478272272965125*^9}, {3.478272309893619*^9, 
+   3.478272313134025*^9}, {3.478272668069769*^9, 3.478272672157865*^9}, {
+   3.478272775888216*^9, 3.4782728174964113`*^9}, {3.47827353139356*^9, 
+   3.4782735470396843`*^9}, 3.503282505679861*^9, {3.5044745448837767`*^9, 
+   3.504474662396327*^9}, {3.5044747004664516`*^9, 3.504474727590831*^9}, {
+   3.504475428728224*^9, 3.504475447398098*^9}, {3.504547449058844*^9, 
+   3.504547543266214*^9}, {3.504548650605076*^9, 3.504548657537065*^9}, 
+   3.504549047788144*^9, {3.724688933072165*^9, 3.724688939517118*^9}},
+ Background->GrayLevel[1]],
+
+Cell[TextData[StyleBox["", "Text",
+ FontSize->14,
+ FontWeight->"Bold"]], "Text",
+ PageWidth->WindowWidth,
+ CellFrame->{{0, 0}, {0, 2}},
+ CellChangeTimes->{{3.472506037228557*^9, 3.472506118630969*^9}, {
+   3.472506156207822*^9, 3.4725061585604067`*^9}, 3.472506211147997*^9, {
+   3.472506309361084*^9, 3.472506402408091*^9}, {3.4725064422937937`*^9, 
+   3.472506486792239*^9}, {3.472506668236364*^9, 3.472506749007777*^9}, {
+   3.4782722702239227`*^9, 3.478272272965125*^9}, {3.478272309893619*^9, 
+   3.478272313134025*^9}, {3.478272668069769*^9, 3.478272672157865*^9}, {
+   3.478272775888216*^9, 3.4782728174964113`*^9}, {3.47827353139356*^9, 
+   3.4782735470396843`*^9}, 3.503282505679861*^9, {3.5044745448837767`*^9, 
+   3.504474662396327*^9}, {3.5044747004664516`*^9, 3.504474727590831*^9}, {
+   3.504475428728224*^9, 3.504475447398098*^9}, {3.504547449058844*^9, 
+   3.504547543266214*^9}, {3.504548650605076*^9, 3.5045487465280123`*^9}, 
+   3.504549053047707*^9},
+ Background->GrayLevel[1]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"system1", " ", "=", 
+     RowBox[{"{", "\[IndentingNewLine]", "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     StyleBox[
+      RowBox[{
+       RowBox[{"format", " ", "is", " ", 
+        RowBox[{
+         RowBox[{"A", "'"}], "[", "t", "]"}]}], "\[Equal]", " ", 
+       RowBox[{
+        RowBox[{"-", "k"}], " ", 
+        RowBox[{"A", "[", "t", "]"}]}]}],
+      FontColor->RGBColor[0.6, 0.4, 0.2]], 
+     StyleBox[",",
+      FontColor->RGBColor[0.6, 0.4, 0.2]], 
+     StyleBox[" ",
+      FontColor->RGBColor[0.6, 0.4, 0.2]], 
+     RowBox[{
+      StyleBox["etc",
+       FontColor->RGBColor[0.6, 0.4, 0.2]], "."}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"initialConditions1", " ", "=", " ", 
+     RowBox[{"{", "\[IndentingNewLine]", "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    StyleBox[
+     RowBox[{
+      RowBox[{
+       RowBox[{"format", " ", "is", " ", 
+        RowBox[{"A", "[", "0", "]"}]}], "\[Equal]", " ", "Azero"}], ",", " ", 
+      
+      RowBox[{
+       RowBox[{"B", "[", "0", "]"}], " ", "\[Equal]", " ", "0"}], ",", " ", 
+      RowBox[{"etc", "."}]}],
+     FontColor->RGBColor[0.6, 0.4, 0.2]], " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"fullSystem1", " ", "=", " ", 
+     RowBox[{"Join", " ", "[", 
+      RowBox[{"system1", ",", " ", "initialConditions1"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"parameters1", " ", "=", 
+     RowBox[{"{", " ", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    StyleBox[
+     RowBox[{
+      RowBox[{
+       RowBox[{"format", " ", "is", " ", "k"}], " ", "\[Rule]", " ", "2"}], 
+      ",", " ", 
+      RowBox[{"Azero", " ", "\[Rule]", " ", "1"}], ",", " ", 
+      RowBox[{"etc", "."}]}],
+     FontColor->RGBColor[0.6, 0.4, 0.2]], 
+    StyleBox[" ",
+     FontColor->RGBColor[0.6, 0.4, 0.2]], 
+    StyleBox["*)",
+     FontColor->RGBColor[0.6, 0.4, 0.2]]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"case1", " ", "=", " ", 
+     RowBox[{"fullSystem1", "/.", "parameters1"}]}], ";"}], 
+   StyleBox["\[IndentingNewLine]",
+    FontColor->RGBColor[0.6, 0.4, 0.2]], 
+   StyleBox["\[IndentingNewLine]",
+    FontColor->RGBColor[0.6, 0.4, 0.2]], 
+   RowBox[{
+    RowBox[{"sol1", " ", "=", 
+     RowBox[{"NDSolve", "[", 
+      RowBox[{"case1", ",", " ", 
+       RowBox[{"(*", "*)"}], " ", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "0", ",", "120"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    StyleBox[
+     RowBox[{
+      RowBox[{"where", " ", "the", " ", 
+       RowBox[{"(*", "*)"}], " ", "is", " ", "above"}], ",", " ", 
+      RowBox[{"specify", " ", "what", " ", "to", " ", "solve", " ", "for"}], 
+      ",", " ", 
+      RowBox[{"e", ".", "g", ".", " ", 
+       RowBox[{"A", "[", "t", "]"}]}]}],
+     FontColor->RGBColor[0.6, 0.4, 0.2]], " ", "*)"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.4015500348999033`*^9, 3.401550175368137*^9}, 
+   3.401550977827938*^9, {3.4725062754673862`*^9, 3.472506302055402*^9}, {
+   3.472506498360824*^9, 3.472506515276862*^9}, 3.4782723292636213`*^9, 
+   3.503282572513864*^9, 3.504290794168481*^9, {3.504546707763514*^9, 
+   3.5045470435055656`*^9}, {3.504548188970881*^9, 3.5045481917483587`*^9}, {
+   3.504548755528399*^9, 3.504548783394828*^9}, {3.504549093764494*^9, 
+   3.5045491319302387`*^9}, {3.5045491685663843`*^9, 
+   3.5045492582199574`*^9}, {3.724688709770501*^9, 3.7246887210388527`*^9}, {
+   3.724688945270027*^9, 3.724688956780979*^9}},
+ Background->GrayLevel[1]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   StyleBox[
+    RowBox[{
+     RowBox[{
+     "example", " ", "of", " ", "a", " ", "plot", " ", "call", " ", "to", " ",
+       "plot", " ", "one", " ", "variable"}], "-", " ", 
+     RowBox[{
+     "you", " ", "may", " ", "need", " ", "to", " ", "change", " ", "the", 
+      " ", "variable", " ", "to", " ", "match", " ", "your", " ", "system"}]}],
+    FontColor->RGBColor[0.6, 0.4, 0.2]], 
+   StyleBox[" ",
+    FontColor->RGBColor[0.6, 0.4, 0.2]], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"A", "[", "t", "]"}], "/.", "sol1"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "10"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotRange", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotStyle", "\[Rule]", " ", "Thick"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"GridLines", "\[Rule]", " ", "Automatic"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"AxesLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<time\>\"", ",", "\"\<concentration\>\""}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PlotLabel", " ", "\[Rule]", " ", "\"\<My Plot\>\""}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.4782745814854393`*^9, 3.478274589954427*^9}, {
+   3.503282776536936*^9, 3.503282825166316*^9}, {3.5032828567619553`*^9, 
+   3.5032828572548227`*^9}, {3.503350631117867*^9, 3.503350707067737*^9}, {
+   3.503350760489725*^9, 3.503350798438047*^9}, {3.5033508456733294`*^9, 
+   3.503350895284669*^9}, {3.503350945432061*^9, 3.503350973830744*^9}, {
+   3.503351037751298*^9, 3.503351074048881*^9}, {3.503351252596322*^9, 
+   3.5033512531184063`*^9}, {3.5033513346161833`*^9, 
+   3.5033513846215677`*^9}, {3.503351415579677*^9, 3.503351560768858*^9}, {
+   3.503351611519154*^9, 3.5033516333602448`*^9}, {3.503351874651348*^9, 
+   3.503351934237109*^9}, {3.503352026174494*^9, 3.50335207627767*^9}, 
+   3.503352124609828*^9, {3.503352197290585*^9, 3.503352205349204*^9}, {
+   3.5033526514428988`*^9, 3.503352652067363*^9}, {3.5033531991784143`*^9, 
+   3.503353199995233*^9}, 3.504290831888137*^9, 3.504547101870234*^9, {
+   3.504547245686201*^9, 3.504547249692007*^9}, {3.504547342475699*^9, 
+   3.5045473650950603`*^9}, {3.504547399793935*^9, 3.504547424096743*^9}, {
+   3.504547551750327*^9, 3.504547582093*^9}, {3.504547639428549*^9, 
+   3.504547702823489*^9}, {3.50454786527866*^9, 3.504547925521152*^9}, {
+   3.504548006079129*^9, 3.5045480154710503`*^9}, 3.50454819604836*^9, {
+   3.504548917999084*^9, 3.504548924021117*^9}, {3.5045491221184483`*^9, 
+   3.5045491358472757`*^9}, {3.5045492473588047`*^9, 3.504549265979652*^9}},
+ Background->GrayLevel[1]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   StyleBox[
+    RowBox[{
+    "example", " ", "of", " ", "a", " ", "plot", " ", "call", " ", "to", " ", 
+     "plot", " ", "two", " ", "variables"}],
+    FontColor->RGBColor[0.6, 0.4, 0.2]], 
+   StyleBox[" ",
+    FontColor->RGBColor[0.6, 0.4, 0.2]], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"Plot", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"A", "[", "t", "]"}], "/.", "sol1"}], ",", 
+      RowBox[{
+       RowBox[{"B", "[", "t", "]"}], "/.", "sol1"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"t", ",", "0", ",", "10"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"PlotRange", "\[Rule]", " ", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1"}], "}"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"PlotStyle", "\[Rule]", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"Red", ",", "Thick"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"Blue", ",", " ", "Thick"}], "}"}]}], "}"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"GridLines", "\[Rule]", " ", "Automatic"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"AxesLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"\"\<time\>\"", ",", "\"\<concentration\>\""}], "}"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"PlotLabel", " ", "\[Rule]", " ", "\"\<My Plot\>\""}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.5045477367175217`*^9, 3.504547763892277*^9}, {
+  3.50454794165161*^9, 3.504547959408431*^9}, {3.504548019486114*^9, 
+  3.504548105502462*^9}, {3.504548872528018*^9, 3.5045488979729013`*^9}, {
+  3.504549268870214*^9, 3.504549276853177*^9}}]
+},
+WindowSize->{947, 715},
+WindowMargins->{{Automatic, 74}, {32, Automatic}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1293, 23, 97, "Text"],
+Cell[1841, 45, 997, 17, 40, "Text"],
+Cell[2841, 64, 3876, 101, 453, "Input"],
+Cell[6720, 167, 2814, 54, 201, "Input"],
+Cell[9537, 223, 1649, 42, 159, "Input"]
+}
+]
+*)
+
