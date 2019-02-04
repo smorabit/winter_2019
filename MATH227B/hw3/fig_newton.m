@@ -1,7 +1,6 @@
-function x = fig_newton(F, max_iter, acc)
+function x = fig_newton(F, max_iter, acc, x)
 
     syms x1 x2;
-    x = zeros(2,1);
     J = jacobian(F, [x1,x2]);
     i = 1;
     errors = [];
@@ -20,4 +19,8 @@ function x = fig_newton(F, max_iter, acc)
     end
     
     semilogy(errors)
+    title(string(F))
+    xlabel("iteration")
+    ylabel("error")
+    grid on
 end
