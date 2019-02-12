@@ -1,0 +1,625 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     20069,        617]
+NotebookOptionsPosition[     19249,        589]
+NotebookOutlinePosition[     19608,        605]
+CellTagsIndexPosition[     19565,        602]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Get", "[", 
+  RowBox[{
+   RowBox[{"NotebookDirectory", "[", "]"}], "<>", " ", 
+   "\"\<RDL/ReactionDiffusionLab.m\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.643443642227674*^9, 3.643443693400209*^9}, {
+  3.757073383835579*^9, 3.757073384964878*^9}},
+ ExpressionUUID -> "0032ac61-ae51-45b9-8799-a8e8738ac8c0"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"h", "=", 
+   RowBox[{"1", "/", "50"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"u0", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"RandomReal", "[", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", "0", ",", "1", ",", "h"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", 
+       RowBox[{"3", "/", "2"}], ",", "h"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"v0", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{".5", "+", 
+      RowBox[{"RandomReal", "[", "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", "0", ",", "1", ",", "h"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", 
+       RowBox[{"3", "/", "2"}], ",", "h"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"d1", "=", ".0007"}], ";", 
+  RowBox[{"d2", "=", ".01"}], ";", 
+  RowBox[{"dt", "=", 
+   RowBox[{".5", "*", 
+    RowBox[{
+     SuperscriptBox["h", "2"], "/", 
+     RowBox[{"Max", "[", 
+      RowBox[{"{", 
+       RowBox[{"d1", ",", "d2"}], "}"}], "]"}]}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{
+  3.639564828313398*^9},ExpressionUUID->"2cf56195-68c0-42b5-8741-\
+82c5d565498c"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"k1", "=", "1"}], ",", " ", 
+     RowBox[{"k2", "=", "1"}]}], "}"}], ",", 
+   RowBox[{"RDDensityPlots", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        FractionBox[
+         SuperscriptBox["u", "2"], "v"], "-", 
+        RowBox[{"k1", " ", "u"}]}], ",", 
+       RowBox[{
+        SuperscriptBox["u", "2"], "-", 
+        RowBox[{"k2", " ", "v"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u", ",", "v"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u0", ",", "v0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.0007", ",", "0.01"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "20", ",", "dt"}], "}"}], ",", 
+     RowBox[{"BoundaryConditions", "\[Rule]", "\"\<Periodic\>\""}]}], "]"}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.6395650373858967`*^9, 3.639565073120159*^9}, {
+  3.6395652806981287`*^9, 
+  3.639565319736471*^9}},ExpressionUUID->"6667d020-8b0e-4e7f-a6d3-\
+dbfe8639bd7a"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"k1", "=", "1"}], ",", " ", 
+     RowBox[{"k2", "=", "1"}]}], "}"}], ",", 
+   RowBox[{"RDDensityPlots", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        FractionBox[
+         SuperscriptBox["u", "2"], "v"], "-", 
+        RowBox[{"k1", " ", "u"}]}], ",", 
+       RowBox[{
+        SuperscriptBox["u", "2"], "-", 
+        RowBox[{"k2", " ", "v"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u", ",", "v"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u0", ",", "v0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.001", ",", "0.01"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "20", ",", "dt"}], "}"}], ",", 
+     RowBox[{"BoundaryConditions", "\[Rule]", "\"\<Periodic\>\""}]}], "]"}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.6395650373858967`*^9, 3.639565073120159*^9}, {
+  3.6395652806981287`*^9, 3.639565319736471*^9}, {3.639565350728359*^9, 
+  3.639565379215938*^9}},ExpressionUUID->"d4bb16cf-dac3-4222-bc54-\
+3098bf0c6a6d"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"k1", "=", "1"}], ",", " ", 
+     RowBox[{"k2", "=", "1"}]}], "}"}], ",", 
+   RowBox[{"RDDensityPlots", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        FractionBox[
+         SuperscriptBox["u", "2"], "v"], "-", 
+        RowBox[{"k1", " ", "u"}]}], ",", 
+       RowBox[{
+        SuperscriptBox["u", "2"], "-", 
+        RowBox[{"k2", " ", "v"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u", ",", "v"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u0", ",", "v0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.0014", ",", "0.01"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "30", ",", "dt"}], "}"}], ",", 
+     RowBox[{"BoundaryConditions", "\[Rule]", "\"\<Periodic\>\""}]}], "]"}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.6395650373858967`*^9, 3.639565073120159*^9}, {
+  3.6395652806981287`*^9, 3.639565319736471*^9}, {3.639565350728359*^9, 
+  3.639565379215938*^9}, {3.639565416765996*^9, 3.639565419092013*^9}, {
+  3.639565453364942*^9, 
+  3.639565453466794*^9}},ExpressionUUID->"787b448c-a338-4927-aaaa-\
+2a2a3cdf2714"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"k1", "=", "1"}], ",", " ", 
+     RowBox[{"k2", "=", "1"}]}], "}"}], ",", 
+   RowBox[{"RDDensityPlots", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        FractionBox[
+         SuperscriptBox["u", "2"], "v"], "-", 
+        RowBox[{"k1", " ", "u"}]}], ",", 
+       RowBox[{
+        SuperscriptBox["u", "2"], "-", 
+        RowBox[{"k2", " ", "v"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u", ",", "v"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u0", ",", "v0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.0021", ",", "0.01"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "30", ",", "dt"}], "}"}], ",", 
+     RowBox[{"BoundaryConditions", "\[Rule]", "\"\<Periodic\>\""}]}], "]"}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.6395650373858967`*^9, 3.639565073120159*^9}, {
+  3.6395652806981287`*^9, 3.639565319736471*^9}, {3.639565350728359*^9, 
+  3.639565379215938*^9}, {3.639565416765996*^9, 3.639565419092013*^9}, {
+  3.639565453364942*^9, 3.639565453466794*^9}, {3.6395655016661777`*^9, 
+  3.6395655017608*^9}},ExpressionUUID->"0b4f33c0-85a1-4eae-b226-7d6207dbb7f4"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"k1", "=", "1"}], ",", " ", 
+     RowBox[{"k2", "=", "1"}]}], "}"}], ",", 
+   RowBox[{"RDDensityPlots", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        FractionBox[
+         SuperscriptBox["u", "2"], "v"], "-", 
+        RowBox[{"k1", " ", "u"}]}], ",", 
+       RowBox[{
+        SuperscriptBox["u", "2"], "-", 
+        RowBox[{"k2", " ", "v"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u", ",", "v"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u0", ",", "v0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.00035", ",", "0.01"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "30", ",", "dt"}], "}"}], ",", 
+     RowBox[{"BoundaryConditions", "\[Rule]", "\"\<Periodic\>\""}]}], "]"}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.6395650373858967`*^9, 3.639565073120159*^9}, {
+  3.6395652806981287`*^9, 3.639565319736471*^9}, {3.639565350728359*^9, 
+  3.639565379215938*^9}, {3.639565416765996*^9, 3.639565419092013*^9}, {
+  3.639565453364942*^9, 3.639565453466794*^9}, {3.6395655016661777`*^9, 
+  3.6395655017608*^9}, {3.6395655578101397`*^9, 
+  3.639565560974924*^9}},ExpressionUUID->"830d09ee-f00f-4918-ba25-\
+c87f839d1f65"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"k1", "=", "0.5"}], ",", " ", 
+     RowBox[{"k2", "=", "1"}]}], "}"}], ",", 
+   RowBox[{"RDDensityPlots", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        FractionBox[
+         SuperscriptBox["u", "2"], "v"], "-", 
+        RowBox[{"k1", " ", "u"}]}], ",", 
+       RowBox[{
+        SuperscriptBox["u", "2"], "-", 
+        RowBox[{"k2", " ", "v"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u", ",", "v"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u0", ",", "v0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.00035", ",", "0.01"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "30", ",", "dt"}], "}"}], ",", 
+     RowBox[{"BoundaryConditions", "\[Rule]", "\"\<Periodic\>\""}]}], "]"}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.6395650373858967`*^9, 3.639565073120159*^9}, {
+   3.6395652806981287`*^9, 3.639565319736471*^9}, {3.639565350728359*^9, 
+   3.639565379215938*^9}, {3.639565416765996*^9, 3.639565419092013*^9}, {
+   3.639565453364942*^9, 3.639565453466794*^9}, {3.6395655016661777`*^9, 
+   3.6395655017608*^9}, {3.6395655578101397`*^9, 3.639565560974924*^9}, {
+   3.639565905171524*^9, 3.639565906970437*^9}, 
+   3.639565941555987*^9},ExpressionUUID->"6b41f846-80a8-452d-9c3c-\
+f1b4d48b6ddf"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"k1", "=", "1"}], ",", " ", 
+     RowBox[{"k2", "=", "1"}]}], "}"}], ",", 
+   RowBox[{"RDDensityPlots", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        FractionBox[
+         SuperscriptBox["u", "2"], "v"], "-", 
+        RowBox[{"k1", " ", "u"}]}], ",", 
+       RowBox[{
+        SuperscriptBox["u", "2"], "-", 
+        RowBox[{"k2", " ", "v"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u", ",", "v"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u0", ",", "v0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.0007", ",", "0.01"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "20", ",", "dt"}], "}"}], ",", 
+     RowBox[{"BoundaryConditions", "\[Rule]", "\"\<Periodic\>\""}]}], "]"}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.6395650373858967`*^9, 3.639565073120159*^9}, {
+  3.6395652806981287`*^9, 
+  3.639565319736471*^9}},ExpressionUUID->"4298a748-ab87-47be-9cbc-\
+2d00f5e8f9e8"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"k1", "=", "1"}], ",", " ", 
+     RowBox[{"k2", "=", "1"}]}], "}"}], ",", 
+   RowBox[{"RDDensityPlots", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        FractionBox[
+         SuperscriptBox["u", "2"], 
+         RowBox[{
+          RowBox[{"0.01", 
+           SuperscriptBox["u", "2"]}], "+", "v"}]], "-", 
+        RowBox[{"k1", " ", "u"}]}], ",", 
+       RowBox[{
+        SuperscriptBox["u", "2"], "-", 
+        RowBox[{"k2", " ", "v"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u", ",", "v"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u0", ",", "v0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.0007", ",", "0.01"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "20", ",", "dt"}], "}"}], ",", 
+     RowBox[{"BoundaryConditions", "\[Rule]", "\"\<Periodic\>\""}]}], "]"}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.6395650373858967`*^9, 3.639565073120159*^9}, {
+  3.6395652806981287`*^9, 3.639565319736471*^9}, {3.6434446809072323`*^9, 
+  3.643444715799958*^9}, {3.643444746512155*^9, 
+  3.6434447790065603`*^9}},ExpressionUUID->"842e5edf-8608-4c4a-b9e8-\
+98b2dca5f177"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"k1", "=", "1"}], ",", " ", 
+     RowBox[{"k2", "=", "1"}]}], "}"}], ",", 
+   RowBox[{"RDDensityPlots", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        FractionBox[
+         SuperscriptBox["u", "2"], 
+         RowBox[{
+          RowBox[{"0.2", 
+           SuperscriptBox["u", "2"]}], "+", "v"}]], "-", 
+        RowBox[{"k1", " ", "u"}]}], ",", 
+       RowBox[{
+        SuperscriptBox["u", "2"], "-", 
+        RowBox[{"k2", " ", "v"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u", ",", "v"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u0", ",", "v0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.0005", ",", "0.01"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "140", ",", "dt"}], "}"}], ",", 
+     RowBox[{"BoundaryConditions", "\[Rule]", "\"\<Periodic\>\""}]}], "]"}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.6395650373858967`*^9, 3.639565073120159*^9}, {
+   3.6395652806981287`*^9, 3.639565319736471*^9}, {3.6434446809072323`*^9, 
+   3.643444715799958*^9}, {3.643444746512155*^9, 3.643444749950675*^9}, {
+   3.643444840549721*^9, 3.643444897760837*^9}, {3.643444933744912*^9, 
+   3.6434449343362103`*^9}, 3.643445059012663*^9, 
+   3.643445110779324*^9},ExpressionUUID->"bc6a91ea-3a25-46fb-b805-\
+78bc80de4e92"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"k1", "=", "1"}], ",", " ", 
+     RowBox[{"k2", "=", "1"}]}], "}"}], ",", 
+   RowBox[{"RDDensityPlots", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        FractionBox[
+         SuperscriptBox["u", "2"], 
+         RowBox[{
+          RowBox[{"0.05", 
+           SuperscriptBox["u", "2"]}], "+", "v"}]], "-", 
+        RowBox[{"k1", " ", "u"}]}], ",", 
+       RowBox[{
+        SuperscriptBox["u", "2"], "-", 
+        RowBox[{"k2", " ", "v"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u", ",", "v"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u0", ",", "v0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.0007", ",", "0.01"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "20", ",", "dt"}], "}"}], ",", 
+     RowBox[{"BoundaryConditions", "\[Rule]", "\"\<Periodic\>\""}]}], "]"}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.6395650373858967`*^9, 3.639565073120159*^9}, {
+  3.6395652806981287`*^9, 3.639565319736471*^9}, {3.6434446809072323`*^9, 
+  3.643444715799958*^9}, {3.643444746512155*^9, 3.643444749950675*^9}, {
+  3.643444802511367*^9, 
+  3.643444822748596*^9}},ExpressionUUID->"4c013ae2-c1ff-4cd1-b847-\
+b7b2e72db38f"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"h", "=", 
+   RowBox[{"1", "/", "40"}]}], ";", 
+  RowBox[{"dt", "=", 
+   RowBox[{".8", "*", 
+    RowBox[{
+     SuperscriptBox["h", "2"], "/", 
+     RowBox[{"Max", "[", 
+      RowBox[{"{", 
+       RowBox[{"d1", ",", "d2"}], "}"}], "]"}]}]}]}]}], "\n", 
+ RowBox[{
+  RowBox[{"u0", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"2", 
+      RowBox[{"RandomReal", "[", "]"}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"1", "-", 
+         RowBox[{"2", "y"}]}], ")"}], "2"]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", "0", ",", "1", ",", "h"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "2", ",", "h"}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"v0", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"4", 
+      RowBox[{"RandomReal", "[", "]"}], "y", " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", "y"}], ")"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", "0", ",", "1", ",", "h"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "2", ",", "h"}], "}"}]}], "]"}]}], 
+  ";"}]}], "Input",ExpressionUUID->"cb1c8475-bfdf-40d4-85f7-778ba03eb3c8"],
+
+Cell[BoxData[
+ RowBox[{"With", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"k1", "=", "50"}], ",", " ", 
+     RowBox[{"k2", "=", "5"}], ",", " ", 
+     RowBox[{"k3", "=", "5"}]}], "}"}], ",", 
+   RowBox[{"RDDensityPlots", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        FractionBox[
+         RowBox[{"k1", " ", 
+          SuperscriptBox["u", "2"]}], 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"k3", "+", 
+            SuperscriptBox["u", "2"]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"k2", " ", "v"}], "+", "1"}], ")"}]}]], "-", "u"}], ",", 
+       RowBox[{"3", 
+        RowBox[{"(", 
+         RowBox[{
+          SuperscriptBox["u", "2"], "-", "v"}], ")"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u", ",", "v"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"u0", ",", "v0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0.0003", ",", "0.01"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "100", ",", "dt"}], "}"}], ",", 
+     RowBox[{"BoundaryConditions", "\[Rule]", "\"\<Periodic\>\""}]}], "]"}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.6395650373858967`*^9, 3.639565073120159*^9}, {
+  3.6395652806981287`*^9, 3.639565319736471*^9}, {3.643444145215969*^9, 
+  3.6434442135630713`*^9}},ExpressionUUID->"dd934d9f-cc71-41ec-a669-\
+c697dcdb028f"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"d1", "=", ".0003"}], ";", 
+  RowBox[{"d2", "=", ".01"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h", "=", 
+   RowBox[{"1", "/", "40"}]}], ";", 
+  RowBox[{"dt", "=", 
+   RowBox[{".8", "*", 
+    RowBox[{
+     SuperscriptBox["h", "2"], "/", 
+     RowBox[{"Max", "[", 
+      RowBox[{"{", 
+       RowBox[{"d1", ",", "d2"}], "}"}], "]"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"u0", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"2", 
+      RowBox[{"RandomReal", "[", "]"}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"1", "-", 
+         RowBox[{"2", "y"}]}], ")"}], "2"]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", "0", ",", "1", ",", "h"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "2", ",", "h"}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"v0", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"4", 
+      RowBox[{"RandomReal", "[", "]"}], "y", " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", "y"}], ")"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", "0", ",", "1", ",", "h"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "2", ",", "h"}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{"RDDensityPlots", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      FractionBox[
+       RowBox[{"50", 
+        SuperscriptBox["u", "2"]}], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"5", "+", 
+          SuperscriptBox["u", "2"]}], ")"}], 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"10", "v"}], "+", "1"}], ")"}]}]], "-", "u"}], ",", 
+     RowBox[{"3", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["u", "2"], "-", "v"}], ")"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"u", ",", "v"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"u0", ",", "v0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"d1", ",", "d2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "100", ",", "dt"}], "}"}], ",", 
+   RowBox[{"BoundaryConditions", "\[Rule]", "\"\<Periodic\>\""}], ",", 
+   RowBox[{"ColorFunction", "\[Rule]", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Hue", "[", 
+       RowBox[{".1", ",", 
+        RowBox[{".3", "+", 
+         RowBox[{".7", 
+          RadicalBox["#", "4"]}]}], ",", 
+        RowBox[{".95", "-", 
+         RowBox[{".9", "#"}]}]}], "]"}], "&"}], ")"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6434445363931293`*^9, 3.643444565016357*^9}, 
+   3.734919212474654*^9},ExpressionUUID->"0c79c426-3a0f-4371-90dd-\
+77e67225094c"]
+},
+WindowSize->{808, 752},
+WindowMargins->{{Automatic, 294}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 336, 7, 32, "Input"],
+Cell[897, 29, 1175, 37, 140, "Input"],
+Cell[2075, 68, 1032, 31, 81, "Input"],
+Cell[3110, 101, 1077, 31, 81, "Input"],
+Cell[4190, 134, 1176, 33, 81, "Input"],
+Cell[5369, 169, 1220, 32, 81, "Input"],
+Cell[6592, 203, 1274, 34, 81, "Input"],
+Cell[7869, 239, 1353, 35, 81, "Input"],
+Cell[9225, 276, 1032, 31, 81, "Input"],
+Cell[10260, 309, 1223, 35, 84, "Input"],
+Cell[11486, 346, 1370, 37, 84, "Input"],
+Cell[12859, 385, 1270, 36, 84, "Input"],
+Cell[14132, 423, 1182, 38, 79, "Input"],
+Cell[15317, 463, 1372, 40, 119, "Input"],
+Cell[16692, 505, 2553, 82, 205, "Input"]
+}
+]
+*)
+
