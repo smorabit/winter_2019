@@ -1,0 +1,280 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10695,        270]
+NotebookOptionsPosition[     10254,        253]
+NotebookOutlinePosition[     10611,        269]
+CellTagsIndexPosition[     10568,        266]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"parameter", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["\[Lambda]", "m1"], "\[Rule]", "m1val"}], ",", 
+       RowBox[{
+        SubscriptBox["\[Lambda]", "m2"], "\[Rule]", "m2val"}], ",", 
+       RowBox[{"dm", "\[Rule]", "dmval"}], ",", 
+       RowBox[{"\[Lambda]p", "\[Rule]", "lampval"}], ",", 
+       RowBox[{"dp", "\[Rule]", "dpval"}], ",", 
+       RowBox[{"n", "\[Rule]", "nval"}], ",", 
+       RowBox[{"k", "\[Rule]", "kval"}]}], "}"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"system", "=", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"m", "'"}], "[", "t", "]"}], "==", 
+        RowBox[{
+         SubscriptBox["\[Lambda]", "m1"], "+", 
+         RowBox[{
+          SubscriptBox["\[Lambda]", "m2"], "*", 
+          FractionBox[
+           SuperscriptBox[
+            RowBox[{"p", "[", "t", "]"}], "n"], 
+           RowBox[{
+            SuperscriptBox["k", "n"], "+", 
+            SuperscriptBox[
+             RowBox[{"p", "[", "t", "]"}], "n"]}]]}], "-", 
+         RowBox[{"dm", "*", 
+          RowBox[{"m", "[", "t", "]"}]}]}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"p", "'"}], "[", "t", "]"}], "\[Equal]", 
+        RowBox[{
+         RowBox[{"\[Lambda]p", "*", 
+          RowBox[{"m", "[", "t", "]"}]}], "-", 
+         RowBox[{"dp", "*", 
+          RowBox[{"p", "[", "t", "]"}]}]}]}]}], "}"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"init", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"m", "[", "0", "]"}], "\[Equal]", "5"}], ",", 
+       RowBox[{
+        RowBox[{"p", "[", "0", "]"}], "\[Equal]", "1"}]}], "}"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"fullsystem", "=", 
+     RowBox[{"Join", "[", 
+      RowBox[{"system", ",", "init"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"numericsoln", "=", 
+     RowBox[{"NDSolve", "[", 
+      RowBox[{
+       RowBox[{"fullsystem", "/.", "parameter"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"m", "[", "t", "]"}], ",", 
+         RowBox[{"p", "[", "t", "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "0", ",", "30"}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Plot", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"m", "[", "t", "]"}], "/.", "numericsoln"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"p", "[", "t", "]"}], "/.", "numericsoln"}], "}"}]}], "}"}],
+       ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "0", ",", "30"}], "}"}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Red", ",", "Thick"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"Blue", ",", " ", "Thick"}], "}"}]}], "}"}]}], ",", " ", 
+      RowBox[{"GridLines", "\[Rule]", "Automatic"}], ",", 
+      RowBox[{"PlotRange", "\[Rule]", "All"}], ",", " ", 
+      RowBox[{"PlotLegends", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\"\<[mRNA]\>\"", ",", "\"\<[protein]\>\""}], "}"}]}], ",", 
+      RowBox[{"AxesLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Time\>\"", ",", "\"\<Concentration\>\""}], "}"}]}], ",", 
+      
+      RowBox[{"PlotLabel", "\[Rule]", "\"\<[mRNA] and [protein] at t\>\""}]}],
+      "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"m1val", ",", "2"}], "}"}], ",", ".1", ",", "10"}], "}"}], ",", 
+   
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"m2val", ",", "18"}], "}"}], ",", "1", ",", "30"}], "}"}], ",", 
+   
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"dmval", ",", "0.8"}], "}"}], ",", ".1", ",", "10"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"lampval", ",", "1"}], "}"}], ",", ".1", ",", "10"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"dpval", ",", "1"}], "}"}], ",", ".1", ",", "10"}], "}"}], ",", 
+   
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"nval", ",", "4"}], "}"}], ",", ".1", ",", "10"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"kval", ",", "10"}], "}"}], ",", "1", ",", "20"}], "}"}]}], 
+  "]"}]], "Input",
+ CellLabel->
+  "In[240]:=",ExpressionUUID->"dc4eb8fd-a11a-486a-9332-753c65e8a166"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`dmval$$ = 0.8, $CellContext`dpval$$ = 
+    1, $CellContext`kval$$ = 10, $CellContext`lampval$$ = 
+    1, $CellContext`m1val$$ = 2, $CellContext`m2val$$ = 
+    18, $CellContext`nval$$ = 4, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`m1val$$], 2}, 0.1, 10}, {{
+       Hold[$CellContext`m2val$$], 18}, 1, 30}, {{
+       Hold[$CellContext`dmval$$], 0.8}, 0.1, 10}, {{
+       Hold[$CellContext`lampval$$], 1}, 0.1, 10}, {{
+       Hold[$CellContext`dpval$$], 1}, 0.1, 10}, {{
+       Hold[$CellContext`nval$$], 4}, 0.1, 10}, {{
+       Hold[$CellContext`kval$$], 10}, 1, 20}}, Typeset`size$$ = {
+    454., {113., 118.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`m1val$3832193$$ = 
+    0, $CellContext`m2val$3832194$$ = 0, $CellContext`dmval$3832195$$ = 
+    0, $CellContext`lampval$3832196$$ = 0, $CellContext`dpval$3832197$$ = 
+    0, $CellContext`nval$3832198$$ = 0, $CellContext`kval$3832199$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`dmval$$ = 0.8, $CellContext`dpval$$ = 
+        1, $CellContext`kval$$ = 10, $CellContext`lampval$$ = 
+        1, $CellContext`m1val$$ = 2, $CellContext`m2val$$ = 
+        18, $CellContext`nval$$ = 4}, "ControllerVariables" :> {
+        Hold[$CellContext`m1val$$, $CellContext`m1val$3832193$$, 0], 
+        Hold[$CellContext`m2val$$, $CellContext`m2val$3832194$$, 0], 
+        Hold[$CellContext`dmval$$, $CellContext`dmval$3832195$$, 0], 
+        Hold[$CellContext`lampval$$, $CellContext`lampval$3832196$$, 0], 
+        Hold[$CellContext`dpval$$, $CellContext`dpval$3832197$$, 0], 
+        Hold[$CellContext`nval$$, $CellContext`nval$3832198$$, 0], 
+        Hold[$CellContext`kval$$, $CellContext`kval$3832199$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`parameter = {
+         Subscript[$CellContext`\[Lambda], $CellContext`m1] -> \
+$CellContext`m1val$$, 
+          Subscript[$CellContext`\[Lambda], $CellContext`m2] -> \
+$CellContext`m2val$$, $CellContext`dm -> $CellContext`dmval$$, $CellContext`\
+\[Lambda]p -> $CellContext`lampval$$, $CellContext`dp -> \
+$CellContext`dpval$$, $CellContext`n -> $CellContext`nval$$, $CellContext`k -> \
+$CellContext`kval$$}; $CellContext`system = {
+         Derivative[1][$CellContext`m][$CellContext`t] == 
+          Subscript[$CellContext`\[Lambda], $CellContext`m1] + 
+           Subscript[$CellContext`\[Lambda], $CellContext`m2] \
+($CellContext`p[$CellContext`t]^$CellContext`n/($CellContext`k^$CellContext`n + \
+$CellContext`p[$CellContext`t]^$CellContext`n)) - $CellContext`dm \
+$CellContext`m[$CellContext`t], 
+          Derivative[
+           1][$CellContext`p][$CellContext`t] == $CellContext`\[Lambda]p \
+$CellContext`m[$CellContext`t] - $CellContext`dp \
+$CellContext`p[$CellContext`t]}; $CellContext`init = {$CellContext`m[0] == 
+          5, $CellContext`p[0] == 1}; $CellContext`fullsystem = 
+        Join[$CellContext`system, $CellContext`init]; \
+$CellContext`numericsoln = NDSolve[
+          ReplaceAll[$CellContext`fullsystem, $CellContext`parameter], {
+           $CellContext`m[$CellContext`t], 
+           $CellContext`p[$CellContext`t]}, {$CellContext`t, 0, 30}]; Plot[{{
+           ReplaceAll[
+            $CellContext`m[$CellContext`t], $CellContext`numericsoln]}, {
+           ReplaceAll[
+            $CellContext`p[$CellContext`t], $CellContext`numericsoln]}}, \
+{$CellContext`t, 0, 30}, PlotStyle -> {{Red, Thick}, {Blue, Thick}}, 
+         GridLines -> Automatic, PlotRange -> All, 
+         PlotLegends -> {"[mRNA]", "[protein]"}, 
+         AxesLabel -> {"Time", "Concentration"}, PlotLabel -> 
+         "[mRNA] and [protein] at t"]), 
+      "Specifications" :> {{{$CellContext`m1val$$, 2}, 0.1, 
+         10}, {{$CellContext`m2val$$, 18}, 1, 
+         30}, {{$CellContext`dmval$$, 0.8}, 0.1, 
+         10}, {{$CellContext`lampval$$, 1}, 0.1, 
+         10}, {{$CellContext`dpval$$, 1}, 0.1, 10}, {{$CellContext`nval$$, 4},
+          0.1, 10}, {{$CellContext`kval$$, 10}, 1, 20}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{499., {242., 248.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.761536530290428*^9},
+ CellLabel->
+  "Out[240]=",ExpressionUUID->"25235570-7284-4c29-ab1c-6b1d9a476055"]
+}, Open  ]]
+},
+WindowSize->{Full, Full},
+WindowMargins->{{316, Automatic}, {Automatic, 50}},
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 4538, 133, 293, "Input",ExpressionUUID->"dc4eb8fd-a11a-486a-9332-753c65e8a166"],
+Cell[5121, 157, 5117, 93, 509, "Output",ExpressionUUID->"25235570-7284-4c29-ab1c-6b1d9a476055"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

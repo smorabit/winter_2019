@@ -1,4 +1,0 @@
-function z=ydot(t,y) % IVP from section 6.1
-    %z=t*y+t^3;
-    z = -5t + 3
-end
